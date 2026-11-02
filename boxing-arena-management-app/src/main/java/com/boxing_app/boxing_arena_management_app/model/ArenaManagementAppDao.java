@@ -19,7 +19,7 @@ public class ArenaManagementAppDao {
     //handles saving a new arena and/or updating its information to the database.
     public Arena saveArena(Arena arena) {return repo.save(arena);}
 
-    public List<Arena> getFighters(Map<String, Object> searchCriteria) {
+    public List<Arena> getArena(Map<String, Object> searchCriteria) {
         Object value;
 
         /*This is the base specification object. Right now when this gets used by
@@ -34,7 +34,7 @@ public class ArenaManagementAppDao {
        if (value instanceof String providedName && StringUtils.hasLength(providedName)) {
            System.out.println("Entered name criteria if-block");
            spec = spec.and(ArenaSpecs.arenaNameStartsWtih(providedName));
-       };
+       }
 
        value = searchCriteria.get("city");
        if (value instanceof String providedCity && StringUtils.hasLength(providedCity)) {
