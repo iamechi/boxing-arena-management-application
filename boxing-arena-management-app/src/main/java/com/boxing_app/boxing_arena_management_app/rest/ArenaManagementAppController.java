@@ -27,7 +27,7 @@ public class ArenaManagementAppController {
     }
 
     @PostMapping("/arenas/add")
-    public ResponseEntity<?> addFighters(@RequestBody Arena arena) {
+    public ResponseEntity<?> addArena(@RequestBody Arena arena) {
         Arena savedArena;
 
         /*This is to prevent hibernate from sending back and update sql query instead of an
@@ -59,7 +59,7 @@ public class ArenaManagementAppController {
 
     @PostMapping("/arenas/search")
     public ResponseEntity<?> searchArenas(@RequestBody Map<String, Object> areaSearchCriteria) {
-        List<Arena> arenas = service.getFighters(areaSearchCriteria);
+        List<Arena> arenas = service.getArena(areaSearchCriteria);
 
         return ResponseEntity.ok(arenas);
     }
