@@ -16,17 +16,18 @@ import java.util.Map;
         allowedHeaders = "*",
         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
 )
+@RequestMapping("/api/arenas")
 public class ArenaManagementAppController {
     @Autowired
     private ArenaManagementAppDao service;
 
     //Get request method for returning all arenas
-    @GetMapping("/arenas")
+    @GetMapping
     public List<Arena> getAllArenas() {
         return service.getAllArenas();
     }
 
-    @PostMapping("/arenas/add")
+    @PostMapping("/add")
     public ResponseEntity<?> addArena(@RequestBody Arena arena) {
         Arena savedArena;
 
@@ -48,7 +49,7 @@ public class ArenaManagementAppController {
         return ResponseEntity.ok(savedArena);
     }
 
-    @PostMapping("/arenas/update")
+    @PostMapping("/update")
     public ResponseEntity<?> updateArena(@RequestBody Arena arena) {
         Arena savedArena;
 
@@ -57,7 +58,7 @@ public class ArenaManagementAppController {
         return ResponseEntity.ok(savedArena);
     }
 
-    @PostMapping("/arenas/search")
+    @PostMapping("/search")
     public ResponseEntity<?> searchArenas(@RequestBody Map<String, Object> areaSearchCriteria) {
         List<Arena> arenas = service.getArena(areaSearchCriteria);
 
